@@ -7,6 +7,7 @@ import { uploadBase64FileToGcp } from "../utils/gcp.js";
 export async function createCategory(req, res, next) {
   try {
     const categoryName = req.body.name;
+    console.log("caytegory.....",categoryName)
     const userId = req.body.createdBy;
     const editedName = new RegExp(["^", categoryName, "$"].join(""), "i");
     const exist = await Category.find({ name: editedName });
@@ -72,7 +73,7 @@ export async function categoryImage(req, res, next) {
           res.status(201).json({
             status: "Created",
             message: "Category Image Updated Successfully",
-
+            
             data: {
               categoryDetails,
             },
@@ -100,8 +101,21 @@ export async function getCategoryList(req, res, next) {
     next(error);
   }
 }
+export async function getAllCategory(req, res, next){
+  try{
+    const data = await Category.find().populate("createdBy");
 
-export const getAllCategory = getAll(Category);
+    return res.status(200).json({
+      status: true,
+      data,
+    })
+
+  }catch(err){
+    next(err);
+  }
+}
+
+// export const getAllCategory = getAll(Category);
 export const updateCategory = updateOne(Category);
 export const getCategory = getOne(Category);
 export const deleteCategory = deleteOne(Category);

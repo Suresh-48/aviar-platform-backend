@@ -16,7 +16,7 @@ import {
   getSingleCourseLesson,
 } from "../controllers/courseLessonController.js";
 
-router.route("/").post(verifyToken, createLesson);
+router.route("/").post(createLesson);
 
 router.route("/lessonlist").get(verifyToken, getCategoryLessonList);
 
