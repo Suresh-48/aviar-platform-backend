@@ -31,7 +31,7 @@ router.route("/check/list").get(verifyToken, getCourseLessonList);
 router
   .route("/:id")
   .get(verifyToken, getCourseLesson)
-  .patch(verifyToken, updateCourseLesson)
+  .patch(updateCourseLesson)
   .delete(verifyToken, deleteCourseLesson);
 
 export default router;

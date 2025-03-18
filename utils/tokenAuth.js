@@ -31,7 +31,7 @@ export async function verifyToken(req, res, next) {
       { email: decoded.email, password: decoded.password },
       TOKEN_KEY,
       {
-        expiresIn: "30m",
+        expiresIn: "8h",
       }
     );
     const editData = {

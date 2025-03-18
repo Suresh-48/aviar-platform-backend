@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 const { Schema, model } = mongoose;
 
+
 const courseLessonSchema = new Schema({
+ 
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Course",
